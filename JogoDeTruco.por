@@ -17,7 +17,6 @@ inclua biblioteca Util --> u
 
 
 
-
 inteiro cartas_por_jogador = 3 // N?mero de cartas por jogador
 inteiro rodadas = 48 // N?mero de rodadas
 inteiro numero_de_cartas = 40 // N?mero de cartas do Baralho
@@ -91,6 +90,8 @@ inteiro rodada_f = 0
 inteiro pontuacao_total = 0
 inteiro pontos_player_1 = 0
 inteiro pontos_player_2 = 0
+logico player1venceu = verdadeiro
+logico player2venceu = falso
 
 
   funcao inicio() {
@@ -126,86 +127,25 @@ inteiro pontos_player_2 = 0
           decidiar_cartas()
           inteiro rodadas_mao = 0
             enquanto(rodadas_mao < cartas_por_jogador) {
-
-              escreva("                                 Pontos Rodadas                  rodada: ", rodada_f + 1 ,"\n")
-              escreva("                                 Pontos P1 = ", pontos_player_1, "\n")   
-              escreva("                                 Pontos P2 = ", pontos_player_2, "\n")
-              escreva("                                 Pontos\n")
-              escreva("                                 Pontos P1 = ", pontuacao_1, " \n")
-              escreva("                                 Pontos P2 = ", pontuacao_2, "\n")  
-              escreva("                              .-==-.         \n")                
-              escreva("   ..........................=@%**#%%#+-.      \n")              
-              escreva("=%%############################%%*===+*#%%#+-.     \n")          
-              escreva("@@-          Player1           -@@========+*#%%#+-.    \n")      
-              escreva("@@-                            -@@=============+*#%%#+-.  \n")   
-              escreva("@@-                            -@@==================+*#%%#+. \n")
-              escreva("@@-                            -@@=======================#@% \n")
-              escreva("@@-    1. ",jogador1[0],"   -@@======================#@#. \n")
-              escreva("@@-                            -@@====================*@%-   \n")
-              escreva("@@-    2. ",jogador1[1],"   -@@==================+%@+     \n")
-              escreva("@@-                            -@@=================#@*.   \n")   
-              escreva("@@-    3. ",jogador1[2],"   -@@===============*@%-    \n") 
-              escreva("@@-                            -@@=============+%@+     \n")   
-              escreva("@@-                            -@@============#@*.     \n")     
-              escreva("@@-                            -@@==========*@%-     \n")        
-              escreva("@@-                            -@@========+%@=      \n")       
-              escreva("@@-                            -@@=======%@*.      \n")        
-              escreva("@@-                            -@@=====*@%-       \n")          
-              escreva("=#%############################%%*===+%@=       \n")            
-              escreva("                           .:-+#@%#*%@*.       \n")             
-              escreva("                                 :-=-.         \n")   
-              escreva("\n")         
-              escreva("Escolha o numero da carta que deseja jogar\n")
-              escreva("\n")
-              leia(escolha_jogador1)
-                enquanto(jogador1[escolha_jogador1 - 1] == "                  "){
-                  escreva("Escolha Outra! \n")
-                  leia(escolha_jogador1)
-                }
-                limpa()
-
-              escreva("                                 Pontos Rodadas                  rodada: ", rodada_f + 1 ,"\n")
-              escreva("                                 Pontos P1 = ", pontos_player_1, "\n")   
-              escreva("                                 Pontos P2 = ", pontos_player_2, "\n")
-              escreva("                                 Pontos\n")
-              escreva("                                 Pontos P1 = ", pontuacao_1, " \n")
-              escreva("                                 Pontos P2 = ", pontuacao_2, "\n")      
-              escreva("                              .-==-.         \n")                
-              escreva("   ..........................=@%**#%%#+-.      \n")              
-              escreva("=%%############################%%*===+*#%%#+-.     \n")          
-              escreva("@@-          Player2           -@@========+*#%%#+-.    \n")      
-              escreva("@@-                            -@@=============+*#%%#+-.  \n")   
-              escreva("@@-                            -@@==================+*#%%#+. \n")
-              escreva("@@-                            -@@=======================#@% \n")
-              escreva("@@-    1. ",jogador2[0],"   -@@======================#@#. \n")
-              escreva("@@-                            -@@====================*@%-   \n")
-              escreva("@@-    2. ",jogador2[1],"   -@@==================+%@+     \n")
-              escreva("@@-                            -@@=================#@*.   \n")   
-              escreva("@@-    3. ",jogador2[2],"   -@@===============*@%-    \n") 
-              escreva("@@-                            -@@=============+%@+     \n")   
-              escreva("@@-                            -@@============#@*.     \n")     
-              escreva("@@-                            -@@==========*@%-     \n")        
-              escreva("@@-                            -@@========+%@=      \n")       
-              escreva("@@-                            -@@=======%@*.      \n")        
-              escreva("@@-                            -@@=====*@%-       \n")          
-              escreva("=#%############################%%*===+%@=       \n")            
-              escreva("                           .:-+#@%#*%@*.       \n")             
-              escreva("                                 :-=-.         \n")
-              escreva("\n")
-              escreva("Escolha o numero da carta que deseja jogar\n")          
-              escreva("\n") 
-              leia(escolha_jogador2)
-
-                enquanto(jogador2[escolha_jogador2 - 1] == "                  "){
-                  escreva("Escolha Outra! \n")
-                  leia(escolha_jogador2)
-                }
-                limpa()
-                comparar_cartas()
-                ganhador_da_mao()
-                u.aguarde(2000)
-                limpa()
+                se(player1venceu == verdadeiro e player2venceu == falso) {
+                jogada1()
+                jogada2()
+                  comparar_cartas()
+                  ganhador_da_mao()
+                  u.aguarde(2000)
+                  limpa()
                 rodadas_mao++
+                }senao
+                se(player2venceu == verdadeiro  e player1venceu == falso){
+
+                  jogada2()
+                  jogada1()
+                  comparar_cartas()
+                  ganhador_da_mao()
+                  u.aguarde(2000)
+                  limpa()
+                rodadas_mao++
+                }
             }
           ganhador_da_rodada()
           rodada_f++
@@ -261,10 +201,14 @@ inteiro pontos_player_2 = 0
   funcao ganhador_da_mao(){
     se (comparar1 < comparar2 ){
       escreva("player 1 ganhou!\n")
+      player1venceu = verdadeiro
+      player2venceu = falso
       pontuacao_1++
     } senao {
       escreva("player 2 ganhou!\n")
       pontuacao_2++
+      player2venceu = verdadeiro   
+      player1venceu = falso
     }
     comparar1 = 0
     comparar2 = 0
@@ -279,7 +223,7 @@ inteiro pontos_player_2 = 0
       limpa()      
     } senao {
       escreva("player 2 foi o vencedor da rodada!\n")
-      pontos_player_2++   
+      pontos_player_2++
       u.aguarde(2000)
       limpa()
     }
@@ -305,5 +249,87 @@ inteiro pontos_player_2 = 0
     escreva("+++++++++++++++++++++++++++++++\n")
     }
   
+  }
+
+  funcao jogada1() {
+
+              escreva("                                 Pontos Rodadas                  rodada: ", rodada_f + 1 ,"\n")
+              escreva("                                 Pontos P1 = ", pontos_player_1, "\n")   
+              escreva("                                 Pontos P2 = ", pontos_player_2, "\n")
+              escreva("                                 Pontos\n")
+              escreva("                                 Pontos P1 = ", pontuacao_1, " \n")
+              escreva("                                 Pontos P2 = ", pontuacao_2, "\n")  
+              escreva("                              .-==-.         \n")                
+              escreva("   ..........................=@%**#%%#+-.      \n")              
+              escreva("=%%############################%%*===+*#%%#+-.     \n") 
+              escreva("@@-          Player1           -@@========+*#%%#+-.    \n")      
+              escreva("@@-                            -@@=============+*#%%#+-.  \n")            
+              escreva("@@-                            -@@==================+*#%%#+. \n")
+              escreva("@@-                            -@@=======================#@% \n")
+              escreva("@@-    1. ",jogador1[0],"   -@@======================#@#. \n")
+              escreva("@@-                            -@@====================*@%-   \n")
+              escreva("@@-    2. ",jogador1[1],"   -@@==================+%@+     \n")
+              escreva("@@-                            -@@=================#@*.   \n")   
+              escreva("@@-    3. ",jogador1[2],"   -@@===============*@%-    \n") 
+              escreva("@@-                            -@@=============+%@+     \n")   
+              escreva("@@-                            -@@============#@*.     \n")     
+              escreva("@@-                            -@@==========*@%-     \n")        
+              escreva("@@-                            -@@========+%@=      \n")       
+              escreva("@@-                            -@@=======%@*.      \n")        
+              escreva("@@-                            -@@=====*@%-       \n")          
+              escreva("=#%############################%%*===+%@=       \n")            
+              escreva("                           .:-+#@%#*%@*.       \n")             
+              escreva("                                 :-=-.         \n")   
+              escreva("\n")         
+              escreva("Escolha o numero da carta que deseja jogar\n")
+              escreva("\n")
+              leia(escolha_jogador1)
+                enquanto(jogador1[escolha_jogador1 - 1] == "                  "){
+                  escreva("Escolha Outra! \n")
+                  leia(escolha_jogador1)
+                }
+                limpa()
+  }
+
+  funcao jogada2() {
+        
+
+              escreva("                                 Pontos Rodadas                  rodada: ", rodada_f + 1 ,"\n")
+              escreva("                                 Pontos P1 = ", pontos_player_1, "\n")   
+              escreva("                                 Pontos P2 = ", pontos_player_2, "\n")
+              escreva("                                 Pontos\n")
+              escreva("                                 Pontos P1 = ", pontuacao_1, " \n")
+              escreva("                                 Pontos P2 = ", pontuacao_2, "\n")      
+              escreva("                              .-==-.         \n")                
+              escreva("   ..........................=@%**#%%#+-.      \n")              
+              escreva("=%%############################%%*===+*#%%#+-.     \n")          
+              escreva("@@-          Player2           -@@========+*#%%#+-.    \n")      
+              escreva("@@-                            -@@=============+*#%%#+-.  \n")   
+              escreva("@@-                            -@@==================+*#%%#+. \n")
+              escreva("@@-                            -@@=======================#@% \n")
+              escreva("@@-    1. ",jogador2[0],"   -@@======================#@#. \n")
+              escreva("@@-                            -@@====================*@%-   \n")
+              escreva("@@-    2. ",jogador2[1],"   -@@==================+%@+     \n")
+              escreva("@@-                            -@@=================#@*.   \n")   
+              escreva("@@-    3. ",jogador2[2],"   -@@===============*@%-    \n") 
+              escreva("@@-                            -@@=============+%@+     \n")   
+              escreva("@@-                            -@@============#@*.     \n")     
+              escreva("@@-                            -@@==========*@%-     \n")        
+              escreva("@@-                            -@@========+%@=      \n")       
+              escreva("@@-                            -@@=======%@*.      \n")        
+              escreva("@@-                            -@@=====*@%-       \n")          
+              escreva("=#%############################%%*===+%@=       \n")            
+              escreva("                           .:-+#@%#*%@*.       \n")             
+              escreva("                                 :-=-.         \n")
+              escreva("\n")
+              escreva("Escolha o numero da carta que deseja jogar\n")          
+              escreva("\n") 
+              leia(escolha_jogador2)
+
+                enquanto(jogador2[escolha_jogador2 - 1] == "                  "){
+                  escreva("Escolha Outra! \n")
+                  leia(escolha_jogador2)
+                }
+                limpa()
   }
 }
