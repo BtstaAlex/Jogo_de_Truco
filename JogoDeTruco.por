@@ -17,45 +17,49 @@ inclua biblioteca Util --> u
 
 
 
-
-inteiro cartas_por_jogador = 3 // Número de cartas por jogador
-inteiro rodadas = 2 // Número de rodadas
-inteiro numero_de_cartas = 33 // Número de cartas do Baralho
+inteiro cartas_por_jogador = 3 // N?mero de cartas por jogador
+inteiro rodadas = 48 // N?mero de rodadas
+inteiro numero_de_cartas = 40 // N?mero de cartas do Baralho
 cadeia cartas[numero_de_cartas] = {
 "1 de Espada  // 40",
 "1 de Paus    // 39",
 "7 de Espada  // 38",
+"7 de Ouro    // 37",
+"7 de Paus    // 31",
+"7 de Copa    // 31",
+"6 de Espada  // 30",
+"6 de Ouro    // 30",
+"6 de Paus    // 30",
+"6 de Copa    // 30",
+"5 de Espada  // 29",
+"5 de Ouro    // 29",
+"5 de Paus    // 29",
+"5 de Copa    // 29",
+"4 de Espada  // 28",
+"4 de Ouro    // 28",
+"4 de Paus    // 28",
+"4 de Copa    // 28",
+"3 de Espada  // 37",
+"3 de Ouro    // 37",
 "3 de Paus    // 37",
 "3 de Copa    // 37",
 "2 de Espada  // 36",
+"2 de Ouro    // 36",
 "2 de Paus    // 36",
 "2 de Copa    // 36",
-"2 de Ouro    // 36",
-"1 de Copa    // 35",
-"1 de Ouro    // 35",
-"13 de Paus   // 34",
-"13 de Copa   // 34",
 "13 de Espada // 34",
 "13 de Ouro   // 34",
-"12 de Paus   // 33",
-"12 de Copa   // 33",
+"13 de Paus   // 34",
+"13 de Copa   // 34",
 "12 de Espada // 33",
 "12 de Ouro   // 33",
-"11 de Paus   // 32",
-"11 de Copa   // 32",
+"12 de Paus   // 33",
+"12 de Copa   // 33",
 "11 de Espada // 32",
 "11 de Ouro   // 32",
-"7 de Paus    // 31",
-"7 de Copa    // 31",
-"6 de Paus    // 30",
-"6 de Copa    // 30",
-"6 de Espada  // 30",
-"6 de Ouro    // 30",
-"5 de Paus    // 29",
-"5 de Copa    // 29",
-"5 de Espada  // 29",
-"5 de Ouro    // 29",
-"4 de Paus    // 28"
+"11 de Paus   // 32",
+"11 de Copa   // 32"
+
  } // Todas as cartas do Baralho
 
 
@@ -108,8 +112,8 @@ logico player2venceu = falso
   }
 
   funcao menu_game(){
-    escreva("Muito bem, começaremos o jogo! \n")
-    escreva("Regras\nCada jogador recebe três cartas por rodada.\nO jogo é disputado em três rodadas, onde os jogadores tentam vencer jogando a carta demaior valor. O jogador que somar 24 pontos vence o jogo.\n")
+    escreva("Muito bem, come?aremos o jogo! \n")
+    escreva("Regras\nCada jogador recebe tr?s cartas por rodada.\nO jogo ? disputado em tr?s rodadas, onde os jogadores tentam vencer jogando a carta demaior valor. O jogador que somar 24  vence o jogo.\n")
     escreva("\n")
     u.aguarde(5000)
     limpa()
@@ -329,4 +333,3 @@ logico player2venceu = falso
                 limpa()
   }
 }
-
